@@ -120,7 +120,7 @@ function card(p,nf){if(p.dl)return '<a class="card" href="#'+p.id+'"><div class=
 var sel=null,cur=null;
 var $=function(i){return document.getElementById(i)};
 function list(){$('list').hidden=false;$('detail').hidden=true;document.title='Shop — Kaan Malkoç';
-$('grid').innerHTML=PRODUCTS.length?PRODUCTS.map(card).join(''):'<p class="empty">'+(L==='en'?'Coming soon.':'Yakında.')+'</p>'}
+$('grid').innerHTML=PRODUCTS.length?PRODUCTS.map(function(p){return card(p)}).join(''):'<p class="empty">'+(L==='en'?'Coming soon.':'Yakında.')+'</p>'}
 function gal(p){var a=im(p);$('dph').className='ph'+(p.dl?' sq':'');$('dph').innerHTML=ph(p,0)+(p.dl?'<span class="bdg">'+(L==='en'?'Web Exclusive':'Web\'e özel')+'</span>':'');var th=$('thumbs');th.innerHTML=a.length>1?a.map(function(u,i){return '<button type="button" class="th'+(i?'':' on')+'" data-i="'+i+'"><img src="'+u+'" alt=""></button>'}).join(''):''}
 function detail(p){cur=p;sel=null;$('list').hidden=true;$('detail').hidden=false;window.scrollTo(0,0);
 document.title=t(p.name)+' — Shop — Kaan Malkoç';gal(p);$('dt').textContent=t(p.name);$('dp').textContent=p.dl?(L==='en'?'Free':'Ücretsiz'):price(p);
