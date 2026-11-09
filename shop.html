@@ -24,7 +24,7 @@ button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:
 .ph .mk{font-family:"Era731",serif;letter-spacing:0;font-weight:400;font-size:clamp(40px,7vw,110px);color:var(--bg);line-height:1}
 .card .t{margin-top:10px;font-size:13px;text-transform:uppercase;line-height:1.2}
 .card .p{font-size:13px;margin-top:2px}
-.ph img{object-fit:contain}.ph.sq{background:#ffa2ba}.ph.sq img{object-fit:contain}.card .ph .h2{position:absolute;inset:0;opacity:0;transition:opacity .25s}.card:hover .ph .h2{opacity:1}.card .ph>img{transition:opacity .25s}.card.two:hover .ph>img:first-child{opacity:0}.card:hover{opacity:1}.h2 img{position:absolute;inset:0;width:100%;height:100%}.thumbs{display:flex;gap:8px;margin-top:8px}.th{width:72px;aspect-ratio:4/5;background:var(--acc);position:relative;opacity:.55;padding:0}.th.on{opacity:1;outline:1.5px solid var(--ink)}.th img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.ph img{object-fit:contain}.ph.sq{position:relative;container-type:inline-size}.bdg{position:absolute;left:50%;top:5%;transform:translate(-50%,-50%);background:var(--ink);color:var(--bg);padding:.55em 1.1em;font-size:max(8px,2.4cqw);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;pointer-events:none;box-shadow:0 2px 0 rgba(0,0,0,.15)}.card .ph .h2{position:absolute;inset:0;opacity:0;transition:opacity .25s}.card:hover .ph .h2{opacity:1}.card .ph>img{transition:opacity .25s}.card.two:hover .ph>img:first-child{opacity:0}.card:hover{opacity:1}.h2 img{position:absolute;inset:0;width:100%;height:100%}.thumbs{display:flex;gap:8px;margin-top:8px}.th{width:72px;aspect-ratio:4/5;background:var(--acc);position:relative;opacity:.55;padding:0}.th.on{opacity:1;outline:1.5px solid var(--ink)}.th img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .card.so .ph{opacity:.55}.card.so .p{text-transform:uppercase}
 .back{font-size:13px;text-transform:uppercase;margin:clamp(18px,3vw,36px) 0 14px;display:inline-block}
 .pd{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:start}
@@ -86,7 +86,7 @@ html[lang=en] span[data-en]{display:inline}
 /* ÜRÜNLER — buradan düzenle. buy: Shopier ürün linki (boşsa buton "Yakında" olur). img: görsel yolu (boşsa KM yer tutucu). soldout: true yaparsan tükendi görünür. */
 var SIZES=["XS","S","M","L","XL","2XL","3XL"];
 var PRODUCTS=[
-{id:"yavasla",name:{tr:"YAVAŞLA",en:"YAVAŞLA"},dl:"shop/Kaan-Malkoc-Yavasla.mp3",dlname:"Kaan Malkoç - Yavaşla.mp3",cover:{tr:"shop/yavasla-tr.jpg",en:"shop/yavasla-en.jpg"},
+{id:"yavasla",name:{tr:"YAVAŞLA",en:"YAVAŞLA"},dl:"shop/Kaan-Malkoc-Yavasla.mp3",dlname:"Kaan Malkoç - Yavaşla.mp3",imgs:["shop/yavasla.jpg"],
 desc:{tr:"kaanmalkoc.com'a özel şarkı. Ücretsiz indir.",en:"A song made exclusively for kaanmalkoc.com. Free to download."},
 details:{tr:"Kaan Malkoç — Yavaşla<br>MP3 · 320 kbps<br>Süre: 2:13",en:"Kaan Malkoç — Yavaşla<br>MP3 · 320 kbps<br>Length: 2:13"}},
 {id:"kelebekler-tee",name:{tr:"KELEBEKLER TEE",en:"KELEBEKLER TEE"},price:1299,imgs:["shop/front.webp","shop/back.webp"],sizes:["S","M","L","XL","2XL"],buy:"https://www.shopier.com/feelzclub/52749027",
@@ -97,7 +97,16 @@ desc:{tr:"Gri, oversize kalıp. Ön yüzde 731, arka yüzde \u201cBir bavulum bi
 details:{tr:"Unisex oversize kalıp.<br>Gri.<br>Ön ve arka baskılı.",en:"Unisex oversized fit.<br>Grey.<br>Printed front and back."}},
 {id:"yalan-dunya-sweatshirt",name:{tr:"YALAN DÜNYA SWEATSHIRT",en:"YALAN DÜNYA SWEATSHIRT"},price:1499,imgs:["shop/sweat-front.webp","shop/sweat-back.webp"],sizes:["S","M","L","XL","2XL"],buy:"https://www.shopier.com/feelzclub/52749054",
 desc:{tr:"Beyaz sweatshirt. Ön yüzde göğüse \u201cYalan Dünya\u201d baskısı.",en:"White sweatshirt. \u201cYalan Dünya\u201d print on the chest."},
-details:{tr:"Unisex kalıp.<br>Beyaz.<br>Ön yüz baskılı, arka yüz sade.",en:"Unisex fit.<br>White.<br>Printed front, plain back."}}
+details:{tr:"Unisex kalıp.<br>Beyaz.<br>Ön yüz baskılı, arka yüz sade.",en:"Unisex fit.<br>White.<br>Printed front, plain back."}},
+{id:"feelz-club-hoodie",name:{tr:"731 x feelz! CLUB HOODIE",en:"731 x feelz! CLUB HOODIE"},price:1599,imgs:["shop/hoodie-front.webp","shop/hoodie-back.webp"],sizes:["S","M","L","XL","2XL"],buy:"https://www.shopier.com/feelzclub/52755541",
+desc:{tr:"Gri hoodie. Ön yüzde göğüse \u201c731 x feelz! CLUB\u201d baskısı.",en:"Grey hoodie. \u201c731 x feelz! CLUB\u201d print on the chest."},
+details:{tr:"Unisex kalıp, çift iplik.<br>Gri.<br>Ön yüz baskılı, arka yüz sade.",en:"Unisex fit, double-thread fabric.<br>Grey.<br>Printed front, plain back."}},
+{id:"ayni-gece-coffee-club-tee",name:{tr:"AYNI GECE COFFEE CLUB x feelz! TEE",en:"AYNI GECE COFFEE CLUB x feelz! TEE"},price:1299,imgs:["shop/tisort-back.webp","shop/tisort-front.webp"],sizes:["S","M","L","XL","2XL"],buy:"https://www.shopier.com/feelzclub/52756874",
+desc:{tr:"Camel tişört. Arkada tam boy \u201cMasada yarım bi' kahve\u201d baskısı, önde göğüste küçük logo.",en:"Camel tee. Full-back \u201cMasada yarım bi' kahve\u201d print, small logo on the chest."},
+details:{tr:"Unisex kalıp.<br>Camel.<br>Ön ve arka yüz baskılı.",en:"Unisex fit.<br>Camel.<br>Printed front and back."}},
+{id:"feelz-club-731-jersey-tee",name:{tr:"FEELZ! CLUB 731 JERSEY TEE",en:"FEELZ! CLUB 731 JERSEY TEE"},price:1499,imgs:["shop/reglan-back.webp","shop/reglan-front.webp"],sizes:["S","M","L","XL","2XL"],buy:"https://www.shopier.com/feelzclub/52757882",
+desc:{tr:"3/4 kollu reglan tişört. Arkada \u201cFEELZ! CLUB 731\u201d forma baskısı, önde sol göğüste takım logosu.",en:"3/4-sleeve raglan tee. \u201cFEELZ! CLUB 731\u201d jersey print on the back, team crest on the left chest."},
+details:{tr:"Unisex kalıp.<br>Gri gövde, füme kol.<br>Ön ve arka yüz baskılı.",en:"Unisex fit.<br>Grey body, navy sleeves.<br>Printed front and back."}}
 ];
 </script>
 <script>
@@ -105,18 +114,18 @@ details:{tr:"Unisex kalıp.<br>Beyaz.<br>Ön yüz baskılı, arka yüz sade.",en
 var h=document.documentElement,L='tr';
 function t(o){return typeof o==='string'?o:(o[L]||o.tr)}
 function price(p){return p.price?'₺'+p.price.toLocaleString('tr-TR'):''}
-function im(p){if(p.cover)return [t(p.cover)];return p.imgs&&p.imgs.length?p.imgs:(p.img?[p.img]:[])}
+function im(p){return p.imgs&&p.imgs.length?p.imgs:(p.img?[p.img]:[])}
 function ph(p,i){var a=im(p);return a.length?'<img src="'+a[i||0]+'" alt="'+t(p.name)+'" loading="lazy">':'<span class="mk">KM</span>'}
-function card(p,nf){if(p.dl)return '<a class="card" href="#'+p.id+'"><div class="ph sq">'+ph(p)+'</div><div class="t">'+t(p.name)+'</div><div class="p">'+(L==='en'?'Free download':'Ücretsiz indir')+'</div></a>';var so=p.soldout,two=!nf&&im(p).length>1;return '<a class="card'+(so?' so':'')+(two?' two':'')+'" href="#'+p.id+'"><div class="ph">'+ph(p)+(two?'<span class="h2">'+ph(p,1)+'</span>':'')+'</div><div class="t">'+t(p.name)+'</div><div class="p">'+(so?(L==='en'?'Sold out':'Tükendi'):price(p))+'</div></a>'}
+function card(p,nf){if(p.dl)return '<a class="card" href="#'+p.id+'"><div class="ph sq">'+ph(p)+'<span class="bdg">'+(L==='en'?'Web Exclusive':'Web\'e özel')+'</span>'+'</div><div class="t">'+t(p.name)+'</div><div class="p">'+(L==='en'?'Free download':'Ücretsiz indir')+'</div></a>';var so=p.soldout,two=!nf&&im(p).length>1;return '<a class="card'+(so?' so':'')+(two?' two':'')+'" href="#'+p.id+'"><div class="ph">'+ph(p)+(two?'<span class="h2">'+ph(p,1)+'</span>':'')+'</div><div class="t">'+t(p.name)+'</div><div class="p">'+(so?(L==='en'?'Sold out':'Tükendi'):price(p))+'</div></a>'}
 var sel=null,cur=null;
 var $=function(i){return document.getElementById(i)};
 function list(){$('list').hidden=false;$('detail').hidden=true;document.title='Shop — Kaan Malkoç';
 $('grid').innerHTML=PRODUCTS.length?PRODUCTS.map(card).join(''):'<p class="empty">'+(L==='en'?'Coming soon.':'Yakında.')+'</p>'}
-function gal(p){var a=im(p);$('dph').className='ph'+(p.dl?' sq':'');$('dph').innerHTML=ph(p,0);var th=$('thumbs');th.innerHTML=a.length>1?a.map(function(u,i){return '<button type="button" class="th'+(i?'':' on')+'" data-i="'+i+'"><img src="'+u+'" alt=""></button>'}).join(''):''}
+function gal(p){var a=im(p);$('dph').className='ph'+(p.dl?' sq':'');$('dph').innerHTML=ph(p,0)+(p.dl?'<span class="bdg">'+(L==='en'?'Web Exclusive':'Web\'e özel')+'</span>':'');var th=$('thumbs');th.innerHTML=a.length>1?a.map(function(u,i){return '<button type="button" class="th'+(i?'':' on')+'" data-i="'+i+'"><img src="'+u+'" alt=""></button>'}).join(''):''}
 function detail(p){cur=p;sel=null;$('list').hidden=true;$('detail').hidden=false;window.scrollTo(0,0);
 document.title=t(p.name)+' — Shop — Kaan Malkoç';gal(p);$('dt').textContent=t(p.name);$('dp').textContent=p.dl?(L==='en'?'Free':'Ücretsiz'):price(p);
 $('sz').innerHTML=(p.sizes||SIZES).map(function(s){return '<button type="button" data-s="'+s+'">'+s+'</button>'}).join('');
-if(p.dl){$('szw').hidden=true;$('det').innerHTML=(p.desc?'<p>'+t(p.desc)+'</p>':'')+'<audio controls preload="none" src="'+p.dl+'" style="width:100%;margin:6px 0 14px"></audio><b>'+(L==='en'?'Details':'Detaylar')+'</b>'+(p.details?t(p.details):'');$('more').hidden=true;buyState();return}
+if(p.dl){$('szw').hidden=true;$('det').innerHTML=(p.desc?'<p>'+t(p.desc)+'</p>':'')+'<b>'+(L==='en'?'Details':'Detaylar')+'</b>'+(p.details?t(p.details):'');$('more').hidden=true;buyState();return}
 $('det').innerHTML=(p.desc?'<p>'+t(p.desc)+'</p>':'')+'<b>'+(L==='en'?'Details':'Detaylar')+'</b>'+(p.details?t(p.details):'')+'<b>'+(L==='en'?'Shipping':'Kargo')+'</b>'+(L==='en'?'Every piece is made just for you and shipped to your address. Estimated time is shown at checkout.':'Her ürün sana özel hazırlanır ve adresine gönderilir. Tahmini süre ödeme sayfasında belirtilir.');
 var others=PRODUCTS.filter(function(x){return x!==p&&!x.dl});$('more').hidden=!others.length;$('mg').innerHTML=others.slice(0,4).map(function(x){return card(x,true)}).join('');
 buyState()}
