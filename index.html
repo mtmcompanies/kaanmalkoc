@@ -325,9 +325,10 @@ html[lang=en] span[data-en],html[lang=en] b[data-en]{display:inline}
      e-posta adresi sayfada görünmez, yalnızca servisin verdiği adres yer alır. */
   var WEB3FORMS_KEY='ede11714-5bdf-4ee4-b26e-1aa089198ee2';  /* web3forms.com erişim anahtarı (herkese açık olması normaldir, e-posta adresini göstermez) */
   var NEWSLETTER_ENDPOINT='https://api.web3forms.com/submit';
+  var ML={tr:'https://assets.mailerlite.com/jsonp/2780130/forms/203618545602397610/subscribe',en:'https://assets.mailerlite.com/jsonp/2780130/forms/203618616217699347/subscribe'};
   var f=document.getElementById('nlForm'); if(!f)return;
   var st=document.getElementById('nlStatus'),btn=f.querySelector('.nl-submit');
-  var T={ok:{tr:'Teşekkürler, listeye eklendin.',en:'Thanks, you are on the list.'},
+  var T={ok:{tr:'Teşekkürler! Kaydını onaylaman için e-postana bir mesaj gönderdim.',en:'Thank you! I sent you an email to confirm your subscription.'},
          bad:{tr:'Geçerli bir e-posta yaz ve onay kutusunu işaretle.',en:'Enter a valid email and tick the consent box.'},
          err:{tr:'Gönderilemedi, biraz sonra tekrar dene.',en:'Could not send, please try again shortly.'},
          off:{tr:'Bülten kaydı henüz bağlanmadı.',en:'Newsletter sign-up is not connected yet.'}};
@@ -339,8 +340,11 @@ html[lang=en] span[data-en],html[lang=en] b[data-en]{display:inline}
     if(f._gotcha.value){return}
     if(!WEB3FORMS_KEY){say('off',true);return}
     btn.disabled=true;
-    fetch(NEWSLETTER_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:'kaanmalkoc.com bülten kaydı',from_name:'kaanmalkoc.com',email:em,consent:'evet',source:'kaanmalkoc.com'})})
-      .then(function(r){return r.json()}).then(function(j){if(!j.success)throw 0;say('ok');f.reset()})
+    var lang=document.documentElement.lang==='en'?'en':'tr';
+    try{fetch(NEWSLETTER_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:'kaanmalkoc.com bülten kaydı ('+lang.toUpperCase()+')',from_name:'kaanmalkoc.com',email:em,consent:'evet',source:'kaanmalkoc.com'})}).catch(function(){})}catch(x){}
+    var fd=new FormData();fd.append('fields[email]',em);fd.append('ml-submit','1');fd.append('anticsrf','true');
+    fetch(ML[lang],{method:'POST',mode:'no-cors',body:fd})
+      .then(function(){say('ok');f.reset()})
       .catch(function(){say('err',true)})
       .then(function(){btn.disabled=false});
   });
