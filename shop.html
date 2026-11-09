@@ -136,7 +136,13 @@ document.addEventListener('keydown',function(e){if($('detail').hidden)return;if(
 $('thumbs').addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!cur)return;$('dph').innerHTML=ph(cur,+b.dataset.i);[].forEach.call($('thumbs').children,function(x){x.classList.toggle('on',x===b)})});
 $('buy').addEventListener('click',function(){var p=cur;if(!p||p.soldout||!p.buy)return;
 if(!sel){$('msg').textContent=L==='en'?'Please pick a size.':'Lütfen bir beden seç.';return}
-var u=p.buy;u+=(u.indexOf('?')>-1?'&':'?')+'size='+encodeURIComponent(sel);window.location.href=u});
+var VID={S:'3557358',M:'3557359',L:'3557360',XL:'3557361','2XL':'3557362'};var pid=p.buy.split('/').pop();var vid=VID[sel];
+if(!vid||!pid){window.location.href=p.buy;return}
+var f=document.createElement('form');f.method='post';f.action='https://www.shopier.com/s/shipping/feelzclub';
+function ad(n,v){var i=document.createElement('input');i.type='hidden';i.name=n;i.value=v;f.appendChild(i)}
+ad('product_id',pid);ad('first_variation_name','Beden');ad('first_variation_id',vid);ad('size',vid);ad('quantity','1');
+for(var k in VID)ad('first',VID[k]);
+document.body.appendChild(f);f.submit()});
 function route(){var id=location.hash.slice(1),p=PRODUCTS.filter(function(x){return x.id===id})[0];p?detail(p):list()}
 window.addEventListener('hashchange',route);
 var b=document.querySelectorAll('[data-set]');
