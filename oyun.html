@@ -812,7 +812,7 @@ function drawTitle(){
   sh('KAAN MALKOÇ — 8 BİT MACERA',W/2,140,8,'#fff','center');
   sh('Kaan, kapaktaki kıza',W/2,151,6,'#fff','center');sh('kavuşmak için yola çıkıyor.',W/2,159,6,'#fff','center');
   const nn=state.needName>0;sh(nn?'ÖNCE İSMİNİ YAZ':'OYUNCU İSMİ',W/2,170,6,nn&&Math.floor(state.t/6)%2?'#ff3b4a':'#fff','center');
-  if(Math.floor(state.t/24)%2===0){rect(W/2-84,194,168,18,'#000');rect(W/2-83,195,166,16,PINK);text(PORT?'BAŞLA  ·  DOKUN':'BAŞLA  ·  ENTER / DOKUN',W/2,207,8,'#0a0a0a','center','H')}
+  if(Math.floor(state.t/24)%2===0){rect(W/2-84,194,168,18,'#000');rect(W/2-83,195,166,16,PINK);{const bt=(PORT?'BAŞLA  ·  DOKUN':'BAŞLA  ·  ENTER / DOKUN').toLocaleUpperCase('tr-TR');ctx.font='8px H';const bw=ctx.measureText(bt).width,ps=Math.min(PORT?9.6:8,8*150/bw);ctx.font=ps+'px H';ctx.fillStyle='#0a0a0a';ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.fillText(bt,Math.round(W/2),207)}}
   if(state.best)sh('EN İYİ SKOR '+state.best,W/2,18,7,'#fff','center');
   ctx.restore();
   if(PORT)drawLogo(Math.round(H*.15),Math.min(W-30,215));
