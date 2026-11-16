@@ -203,6 +203,11 @@ footer{padding:var(--gut);border-top:1px solid var(--line);margin-top:0}
 html[lang=en] [data-tr]{display:none}
 html[lang=en] [data-en]{display:revert}
 html[lang=en] span[data-en],html[lang=en] b[data-en]{display:inline}
+.oyun-banner{display:block;width:calc(100% - 32px);max-width:1100px;margin:24px auto;border-radius:4px;box-shadow:0 6px 0 #0a0a0a;transition:transform .08s,box-shadow .08s;-webkit-tap-highlight-color:transparent}
+.oyun-banner img{display:block;width:100%;height:auto;image-rendering:pixelated;border-radius:4px}
+.oyun-banner:hover{transform:translateY(-2px)}
+.oyun-banner:active{transform:translateY(5px);box-shadow:0 1px 0 #0a0a0a}
+@media(max-width:767px){.oyun-banner{max-width:420px}}
 </style>
 <meta property="og:site_name" content="Kaan Malkoç">
 <meta property="og:type" content="website">
@@ -248,6 +253,11 @@ html[lang=en] span[data-en],html[lang=en] b[data-en]{display:inline}
     </div>
     <a class="hero-cover" href="https://onerpm.link/kaanmalkoc_731" target="_blank" rel="noopener" aria-label="731"><img src="731-cover.jpg" alt="Kaan Malkoç — 731"></a>
   </div>
+
+  <!-- OYUN BANNER -->
+  <a class="oyun-banner" href="oyun.html" aria-label="731 oyununu oyna">
+    <picture><source media="(min-width:768px)" srcset="731-poster.png" width="1350" height="759"><img src="731-banner.png" alt="731 — Kaan Malkoç 8 Bit Macera. Şimdi oyna" width="1080" height="1320" loading="lazy"></picture>
+  </a>
 
   <!-- AYNI GECE -->
   <section class="out-now" id="aynigece">
