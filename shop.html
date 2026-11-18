@@ -29,7 +29,7 @@ button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:
 .back{font-size:13px;text-transform:uppercase;margin:clamp(18px,3vw,36px) 0 14px;display:inline-block}
 .pd{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:start}
 @media(max-width:820px){.pd{grid-template-columns:1fr}}
-.pd .ph{aspect-ratio:4/5}
+.pd .ph{aspect-ratio:4/5}@media(min-width:800px){.pd{grid-template-columns:minmax(0,.8fr) minmax(0,1fr)}.pd .ph{height:calc(100vh - 170px);max-height:640px;width:auto;max-width:100%;justify-self:center}}
 .pi h2{font-family:"Era731",serif;letter-spacing:0;font-weight:400;text-transform:uppercase;font-size:clamp(34px,4.6vw,72px);line-height:1.02}
 .pi .pr{font-size:20px;margin:12px 0 22px}
 .lab{font-size:11px;text-transform:uppercase;margin-bottom:8px;opacity:.75}
